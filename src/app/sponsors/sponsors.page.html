@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Patrocinadores</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+
+    <div *ngFor="let sponsor of _ss.sponsor" class="sponsors">
+        <h3>{{sponsor.name}}</h3>
+        <ion-card *ngFor="let items of sponsor.sponsors" (click)="irUrl(items.url_web)" [ngClass]="{'isNotOro' : sponsor.id != 3}">
+            <img [src]="items.url_photo">
+            <div class="card-title">
+                <h2>{{ items.name }}</h2>
+            </div>
+        </ion-card>
+    </div>
+
+</ion-content>

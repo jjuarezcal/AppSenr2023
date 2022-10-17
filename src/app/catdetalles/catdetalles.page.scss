@@ -1,0 +1,71 @@
+.twoheader {
+    background-color: #377e7a;
+}
+
+.cardPrincipal {
+    padding: 10px;
+}
+
+.cardPrincipal h3 {
+    margin: 0px;
+    font-size: 20px;
+    color: #000000;
+}
+
+.contenidoHoras {
+    border: 1px solid #e8e7e7;
+    font-size: 10px;
+    float: left;
+    margin-right: 10px;
+}
+
+.franga {
+    background-color: #4490c9;
+    color: #FFFFFF;
+    padding: 5px;
+    text-align: center;
+}
+
+.horas {
+    padding: 5px;
+    color: #6f6f6f;
+    text-align: center;
+}
+
+.badge {
+    float: right;
+    position: relative;
+}
+
+ion-view {
+    background: #FFFFFF !important;
+}
+
+ion-tabs {
+    background: #FFFFFF !important;
+}
+
+.noPadding {
+    padding: 0px;
+    margin: 0px;
+}
+
+.botonUrl {
+    padding: 3px 10px 3px 10px;
+    background-color: #ff4081;
+    color: #FFFFFF;
+}
+
+.botonUrlNo {
+    padding: 3px 10px 3px 10px;
+    background-color: #cccccc;
+    color: #FFFFFF;
+}
+
+.marginLeft {
+    margin-left: 5px;
+}
+
+ion-list {
+    display: initial;
+}

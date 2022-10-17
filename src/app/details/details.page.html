@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-button (click)="dismiss()">
+                <ion-icon slot="icon-only" name="md-arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Editar perfil</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="contienePreguntas">
+        <div class="user-image-content">
+            <ion-row class="user-image-row">
+                <ion-col size="6" offset="3">
+                    <img [src]="usuarioLog.image" alt="imagen de usuario" />
+                </ion-col>
+            </ion-row>
+            <ion-row class="user-image-row">
+                <ion-col size="6" offset="3">
+                    <!-- <ion-button class="image-action-button" fill="outline" expand="block" size="small" (click)="openImagePicker()">Cambiar imagen</ion-button>-->
+                </ion-col>
+            </ion-row>
+        </div>
+
+        <form class="new-user-form" [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+            <ion-item>
+                <ion-label position="top" [ngStyle]="_is.textos">Cambiar imagen </ion-label>
+                <ion-input type="file" formControlName="imagen" class="form-control" (change)="uploadImageToFirebase($event)"></ion-input>
+
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating" [ngStyle]="_is.textos">Nombre </ion-label>
+                <ion-input type="text" formControlName="nombre" class="form-control" value="{{usuarioLog.nombre}}"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating" [ngStyle]="_is.textos">Apellidos</ion-label>
+                <ion-input type="text" formControlName="apellidos" class="form-control" value="{{usuarioLog.apellidos}}"></ion-input>
+            </ion-item>
+            <ion-button class="form-action-button" expand="block" type="submit">Guardar los cambios</ion-button>
+        </form>
+        <!--<ion-button class="form-action-button" expand="block" color="danger" (click)="delete()">Delete</ion-button>-->
+    </div>
+</ion-content>

@@ -1,0 +1,105 @@
+.titulos {
+    text-align: center;
+    background-color: #4490c9;
+    color: #FFFFFF;
+    // padding-top: 30px;
+    // padding-bottom: 30px;
+}
+
+.contieneTitulos {
+    text-align: center;
+    background-color: #92c3da;
+    color: #FFFFFF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.contieneTitulos h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.cartaNews h2 {
+    border-bottom: 1px solid #CCCCCC;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.cartaNews p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.lefMargin {
+    margin-left: 30px;
+}
+
+.social {
+    border-bottom: 1px solid #CCCCCC;
+    margin-bottom: 20px;
+}
+
+.social ion-icon {
+    font-size: 30px;
+}
+
+.containerHtml {
+    height: 40px;
+    overflow: hidden;
+}
+
+.containerHt {
+    height: 40px;
+    overflow: hidden;
+}
+
+.show {
+    overflow: visible;
+    height: auto;
+}
+
+.ht {
+    overflow: visible;
+    height: auto;
+}
+
+.arrow {
+    text-align: center;
+    color: #4490c9;
+    font-size: 30px;
+    background-image: url('assets/images/linea.png');
+    background-position: center left;
+    background-repeat: repeat-x;
+    max-height: 35px;
+    z-index: 100;
+}
+
+.arrow ion-icon {
+    z-index: 1000;
+    background-color: #FFFFFF;
+}
+
+.cartaInfo a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.typeCard {
+    --ion-safe-area-left: 0px;
+    --ion-safe-area-right: 0px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: block;
+    position: relative;
+    background: var(--background);
+    color: var(--color);
+    font-family: var(--ion-font-family, inherit);
+    overflow: hidden;
+    --background: var(--ion-item-background-color, transparent);
+    --color: var(--ion-text-color-step-150, #262626);
+    margin: 10px;
+    border-radius: 2px;
+    font-size: 14px;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    /* box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12); */
+}

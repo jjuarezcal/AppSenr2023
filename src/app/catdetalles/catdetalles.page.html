@@ -1,0 +1,142 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+            <!--<ion-back-button></ion-back-button> -->
+        </ion-buttons>
+        <ion-title *ngFor="let events of events">
+            {{ events.contenido.title }}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div *ngFor="let events of events">
+        <ion-fab vertical="top" horizontal="end" slot="fixed">
+            <ion-fab-button color="tertiary">
+                <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+
+            <ion-fab-list>
+                <ion-fab-button (click)="openAlertNewTask(events.contenido)">
+                    <ion-icon ios="ios-create" md="md-create"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button (click)="guardarPrograma(events.contenido)">
+                    <ion-icon ios="ios-heart" md="md-heart"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button (click)="share(events.contenido.title, events.contenido.description)">
+                    <ion-icon ios="ios-share" md="md-share"></ion-icon>
+                </ion-fab-button>
+            </ion-fab-list>
+
+        </ion-fab>
+
+
+        <h3>Información</h3>
+
+        <ion-card class="cardPrincipal">
+            <div *ngFor="let item of guardadas">
+                <div class="ribbon ribbon-top-right" *ngIf="item.contenido == true && item.key == 'programa-'+events.contenido.id"><span>Guardada</span></div>
+            </div>
+
+            <div *ngFor="let item of guardadanotas">
+                <div class="topClip" *ngIf="item.contenido == true && item.key == events.contenido.title">
+                    <ion-icon ios="ios-attach" md="md-attach"></ion-icon>
+                </div>
+            </div>
+
+
+            <ion-card-content>
+
+                <div class="contenidoHoras">
+                    <div class="franga">
+                        <span>{{events.contenido.state}}</span>
+                    </div>
+                    <div class="horas">{{events.contenido.hour_ini}} - {{events.contenido.hour_end}}</div>
+                </div>
+                <strong>{{events.contenido.title}} {{_ms.estado}}</strong>
+
+
+                <ion-badge color="tertiary" slot="end" class="badge positionBottom" *ngFor="let item of _ss.rooms">
+                    <span *ngIf="events.contenido.room_id == item.id"> {{item.name}}</span>
+                </ion-badge>
+
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card class="cardPrincipal" *ngIf="events.contenido.description">
+            <h3>Descripción</h3>
+            <ion-card-content>
+
+                <p>{{events.contenido.description}}</p>
+            </ion-card-content>
+        </ion-card>
+
+
+        <ion-card *ngIf="events.contenido.url || events.contenido.url_pdf">
+            <ion-card-content class="cardPrincipal">
+                <h3>Abstract</h3>
+                <button ion-button small (click)="irUrl(events.contenido.url)" class="botonUrl" *ngIf="events.contenido.url">Ver Abstract</button>
+                <button ion-button small (click)="abrirPdf(events.contenido.url_pdf)" class="botonUrl marginLeft" *ngIf="events.contenido.url">Ver Pdf</button>
+
+                <button ion-button small class="botonUrlNo" *ngIf="!events.contenido.url">Ver Abstract</button>
+                <button ion-button small class="botonUrlNo marginLeft" *ngIf="!events.contenido.url_pdf">Ver Pdf</button>
+
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card class="cardPrincipal" *ngIf="events.contenido.speakers?.length > 0">
+            <h3>Presentadores/Moderadores</h3>
+            <ion-card-content>
+                <div class="spakersNo">
+                    <ion-list *ngFor="let speaker of _ss.speakers" (click)="detalles(speaker)">
+                        <span *ngFor="let item of events.contenido.speakers">
+                   
+                
+                    <ion-item *ngIf="item.id == speaker.id">
+                        <ion-avatar slot="start">
+                            <img [src]="speaker.url_photo">
+                        </ion-avatar>
+                        <ion-label>
+                            <strong>{{speaker.name}} {{speaker.surname}}</strong>
+                            <p>{{speaker.organization}}</p>
+                        </ion-label>
+                    </ion-item>
+                </span>
+                    </ion-list>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card class="cardPrincipal" *ngIf="events.contenido.sessions?.length > 0">
+
+            <h3>Ponencias</h3>
+
+            <ion-card-content class="noPadding">
+                <ion-list>
+                    <span *ngFor="let item of events.contenido.sessions">
+             
+                        <ion-item class="noPadding" (click)="detallesPonencia(item)">
+                            <ion-label text-wrap>
+                                <div class="contenidoHoras">
+                                    <div class="franga" *ngIf="item.state !== null"><span>{{item.state}}</span></div>
+    <div class="horas">{{item.hour_ini}} - {{item.hour_end}}</div>
+    </div>
+    <h4>{{item.title}}</h4>
+    <ion-badge color="tertiary" slot="end" class="badge"><span *ngIf="item.room.name">{{item.room.name}}</span></ion-badge>
+
+    </ion-label>
+    </ion-item>
+
+    </span>
+    </ion-list>
+    </ion-card-content>
+
+    </ion-card>
+
+
+
+    </div>
+
+</ion-content>

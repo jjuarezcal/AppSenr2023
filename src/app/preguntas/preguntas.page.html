@@ -1,0 +1,125 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            Preguntas a ponentes
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<div *ngIf="comunicacion" class="header" [ngStyle]="_is.estilo">
+    <h4> {{comunicacion[0].payload.doc.data().title}}</h4>
+</div>
+
+<ion-content padding>
+
+
+    <div class="accesoRapido">
+        <h3>Acceso rápido</h3>
+        <ion-row>
+            <ion-col class="col">
+                <div class="preguntasCol redondo" [routerDirection]="'root'" [routerLink]="['/preguntas']">
+                    <ion-icon name="help"></ion-icon>
+                </div>
+                <small>Preguntas</small>
+            </ion-col>
+            <ion-col class="col">
+                <div class="ponentes redondo" [routerDirection]="'root'" [routerLink]="['/speakers']">
+                    <ion-icon name="contact"></ion-icon>
+                </div>
+                <small>Ponentes</small>
+            </ion-col>
+            <ion-col class="col">
+                <div class="usuarios redondo">
+                    <ion-icon name="contacts" [routerDirection]="'root'" [routerLink]="['/usuarios']"></ion-icon>
+                </div>
+                <small>Usuarios</small>
+            </ion-col>
+            <ion-col class="col">
+                <div class="mas redondo">
+                    <ion-icon name="list-box" [routerDirection]="'root'" [routerLink]="['/programa']"></ion-icon>
+                </div>
+                <small>Programa</small>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div class="noPreguntas">No hay preguntas</div>
+    <div *ngFor="let item of preguntas; let i = index; first as isFirst; let l = count" class="contienePreguntas">
+        <div>
+            <!--{{preguntasServices.contadorOld}} > {{l}}-->
+            <div *ngIf="esmoderador == true && preguntasServices.contadorOld < l" class="anima">
+                <!--<div *ngIf="item.payload.oldIndex == 0" class="anima">-->
+                <ion-img src="assets/imgs/icon_mail.gif" *ngIf="showImage"></ion-img>
+            </div>
+            <div class="preguntas" *ngIf="item.payload.doc.data().autor == UID || comunicacion[0].payload.doc.data().idModeradores == UID">
+
+
+                <!--aqui metemos los chips de los usuarios-->
+                <div class="chip" *ngFor="let user of items" [style.background-color]="user.payload.doc.data().color">
+                    <ion-avatar class="Avatar">
+                        <img class="imagenAvatar" *ngIf="item.payload.doc.data().autor == user.payload.doc.id" [src]="user.payload.doc.data().image">
+                    </ion-avatar>
+                    <ion-label class="labelAvatar" *ngIf="item.payload.doc.data().autor == user.payload.doc.id">{{user.payload.doc.data().nombre}}</ion-label>
+                </div>
+                <!--aquí el botón eliminar solo para respuesta de los ponentes-->
+                <div class="responder" *ngIf="esmoderador == true">
+                    <ng-container>
+                        <div class="eliminar" (click)="eliminarPregunta(item.payload.doc.id)">
+                            <ion-icon name="close"></ion-icon>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+                <!--aquí el botón para pantalla completa solo para respuesta de los ponentes-->
+
+                <div class="responder" *ngIf="esmoderador == true">
+                    <ng-container>
+                        <div class="pantalla" (click)="pantallaCompleta(item.payload.doc.id)">
+                            <ion-icon name="desktop"></ion-icon>
+                        </div>
+                    </ng-container>
+
+                </div>
+                <!--aquí el botón responder solo para respuesta de los ponentes-->
+                <div class="responder" *ngIf="esmoderador == true">
+                    <ng-container>
+                        <div class="respuesta" (click)="responderPreguntaModal(item.payload.doc.id, item.payload.doc.data())">
+                            <ion-icon name="help-circle"></ion-icon>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+
+
+                <!--aquí metemos las preguntas-->
+                <ng-container class="pregunta">
+                    <p class="preguntaOver">{{item.payload.doc.data().titulo}}</p>
+
+                    <div class="paraPonente" *ngIf="!item.payload.doc.data().ponente">Pregunta para: Consulta general</div>
+                    <div class="paraPonente" *ngIf="item.payload.doc.data().ponente">Pregunta para: {{item.payload.doc.data().ponente}}</div>
+
+                </ng-container>
+
+            </div>
+            <!--aquí metemos las respuestas-->
+            <div *ngFor="let res of respuestas" class="respuestas">
+                <div *ngIf="res.payload.doc.data().preguntaId == item.payload.doc.id && esponente == true">
+                    <div class="sepLineal"></div>
+                    <p>{{res.payload.doc.data().respuesta}}</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- aquí acaba el ngif general-->
+    </div>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="tertiary" (click)="openNewUserModal()">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

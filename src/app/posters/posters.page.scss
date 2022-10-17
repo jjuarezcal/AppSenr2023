@@ -1,0 +1,31 @@
+.twoheader {
+    background-color: #377e7a;
+}
+
+ion-select {
+    width: 92%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #FFFFFF;
+    --placeholder-color: #4490c9;
+    --icon-color: #4490c9;
+    --padding-bottom: 5px;
+    --padding-top: 5px;
+}
+
+ion-segment-button {
+    float: left;
+    width: 50%;
+}
+
+.sc-ion-segment-md-s>.segment-button-checked {
+    background: #4490c9;
+    --btn-border-color: #4490c9;
+    color: #ffffff;
+}
+
+.top {
+    margin-top: 15px;
+    text-transform: capitalize;
+    font-weight: 800;
+}

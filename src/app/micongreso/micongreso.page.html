@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Mi congreso</ion-title>
+    </ion-toolbar>
+
+    <ion-segment [(ngModel)]="currentPage">
+        <ion-segment-button [value]="misnotas">
+            Mis notas
+            <ion-badge [ngStyle]="_is.estilo" *ngFor="let item of notas; let i = index; let last = last ">
+                <span *ngIf="last">{{i +1}}</span>
+            </ion-badge>
+        </ion-segment-button>
+        <ion-segment-button [value]="misprogramas">
+            Programas
+            <ion-badge color="secondary" *ngFor="let item of programas; let i = index; let last = last ">
+                <span *ngIf="last">{{i +1}}</span>
+            </ion-badge>
+        </ion-segment-button>
+        <ion-segment-button [value]="misponentes">
+            Ponentes
+            <ion-badge color="tertiary" *ngFor="let item of guardarponentes; let i = index; let last = last ">
+                <span *ngIf="last">{{i +1}}</span>
+            </ion-badge>
+        </ion-segment-button>
+    </ion-segment>
+
+</ion-header>
+
+
+
+<ion-content>
+
+    <ion-nav [root]="currentPage"></ion-nav>
+
+
+</ion-content>

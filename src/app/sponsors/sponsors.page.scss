@@ -1,0 +1,48 @@
+.card-background-page {
+    ion-card {
+        position: relative;
+        text-align: center;
+    }
+    .card-title {
+        position: absolute;
+        bottom: 0%;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 0px;
+        background-image: url('/assets/images/bg-degrade.png');
+        background-repeat: repeat-x;
+        min-height: 80px;
+    }
+    .card-title h2 {
+        padding-top: 15px;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    h3 {
+        padding-left: 20px;
+    }
+}
+
+.isNotOro {
+    width: 46%;
+    float: left;
+    margin: 0px 2% 10px 2%;
+    min-height: 110px;
+}
+
+@media only screen and (min-width: 600px) {
+    .isNotOro {
+        width: 46%;
+        float: left;
+        margin: 0px 2% 10px 2%;
+        min-height: 180px;
+    }
+}
+
+.sponsors h3 {
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}

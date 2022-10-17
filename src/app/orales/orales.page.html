@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Comunicaciones orales
+        </ion-title>
+
+
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div *ngFor="let categoria of _os.categorias" class="{{categoria.id}}">
+        <!--aquí vamos a filtar la categoría por su id para poder mostrar según selección-->
+        <div *ngIf="categoria.id == _os.id">
+            <div>
+
+                <ion-segment [(ngModel)]="dia">
+                    <ion-segment-button *ngFor="let days of categoria.days" [value]="days.name">
+                        {{days.name}}
+                    </ion-segment-button>
+                </ion-segment>
+
+                <div [ngSwitch]="dia" *ngFor="let days of categoria.days">
+                    <ion-list *ngSwitchCase="days.name" ngSelected="days.name == days.name">
+                        <!--<ion-item detail="true" *ngFor="let events of days.events" [href]="'/catdetalles/' + events.id">-->
+                        <div *ngFor="let events of days.events" class="orales">
+                            <ion-item detail="true" (click)="detalles(events)">
+
+                                <ion-label>
+
+                                    <div class="avatar-circle">
+                                        <span class="initials">{{avatar(events.title)}}</span>
+                                    </div>
+                                    <h2>{{events.title}}</h2>
+
+                                    <ion-badge color="tertiary" class="oralesBage">{{events.state}}</ion-badge>
+                                    <ion-badge color="tertiary" class="oralesBage">{{events.hour_ini}} - {{events.hour_end}}</ion-badge>
+                                    <ion-badge color="tertiary" class="oralesBage" slot="end" *ngFor="let item of _ss.rooms">
+                                        <span *ngIf="events.room_id == item.id">
+                                        {{item.name}}
+                                      </span>
+                                    </ion-badge>
+
+                                </ion-label>
+
+                            </ion-item>
+                        </div>
+
+                    </ion-list>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</ion-content>

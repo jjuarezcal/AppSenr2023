@@ -1,0 +1,105 @@
+<ion-header>
+    <ion-toolbar class="personal" [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Inicio
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div>
+        <!-- <ion-img src="assets/images/home.png" class="animation"></ion-img>-->
+        <img [src]="_is.imagenHome" class="animasvg" />
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-4 pointer" routerLink="/micongreso" routerDirection="root">
+                <div class="colHome">
+                    <ion-icon ios="ios-document" md="md-document"></ion-icon>
+                    <br>Mi Congreso
+                </div>
+            </div>
+            <div class="col-4 pointer" routerLink="/news" routerDirection="root">
+                <div class="colHome">
+                    <ion-icon ios="ios-medical" md="md-medical"></ion-icon>
+                    <br>Noticias
+                </div>
+            </div>
+            <div class="col-4 pointer" routerLink="/programa" routerDirection="root">
+                <div class="colHome">
+                    <ion-icon ios="ios-albums" md="md-albums"></ion-icon>
+                    <br>Programa
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 pointer" routerLink="/speakers" routerDirection="root">
+                <div class="colHome">
+                    <ion-icon ios="ios-people" md="md-people"></ion-icon>
+                    <br>Ponentes
+                </div>
+            </div>
+            <div class="col-4 pointer" routerLink="/informacion" routerDirection="root">
+                <div class="colHome">
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                    <br>Información
+                </div>
+            </div>
+            <div class="col-4 pointer" routerLink="/ubicacion" routerDirection="root">
+                <div class="colHome">
+                    <ion-icon ios="ios-locate" md="md-locate"></ion-icon>
+                    <br>Ubicación
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="pointer fondo" (click)="abrir('https://docs.google.com/forms/d/1mwn2v38gzoY_90ZbNcSHJF23_nwOnTo3NZaRaJm2WfE/viewform')">
+        Formulario acreditación jueves
+    </div>
+
+    <div class="pointer fondo" (click)="abrir('https://docs.google.com/forms/d/1_CSMEgvPItTRGctK1ivF_QALtHfSf_MTtOvbb-Fn9UA/viewform')">
+        Formulario acreditación viernes
+    </div>
+
+    <div class="pointer fondo" (click)="abrir('https://docs.google.com/forms/d/1mzHsTHRDaUt5cSP5vGkWA9rKTO_ZJ4fMiCHSgjIvfCk/viewform')">
+        Formulario acreditación sábado
+    </div>
+
+    <div class="pointer fondo" (click)="abrir('https://app.sli.do/event/vk4bQGg4GUFF6ok7T38APK')">
+        Votación sesión de casos interactiva
+    </div>
+
+    <ion-list>
+        <ion-list-header class="noticias">Noticias <span>
+            <a href="/news">Ver más</a></span>
+        </ion-list-header>
+        <!--<ion-item *ngFor="let news of _ns.informacion" [href]="'/newsdetail/' + news.id" detail="true">-->
+        <ion-item *ngFor="let news of _ns.informacion" (click)="enviarDetalles(news)">
+            <ion-avatar slot="start">
+                <img [src]="news.url_image">
+            </ion-avatar>
+            <ion-label>
+                <h2>{{news.title}}</h2>
+                <p>{{news.description}}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+</ion-content>
+
+<ion-footer class="white">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="tertiary" (click)="envio('info@tramasolutions.com')">
+            <ion-icon name="mail-unread"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-toolbar>
+        <img [src]="_is.sponsor" class="logoFooter" />
+    </ion-toolbar>
+</ion-footer>

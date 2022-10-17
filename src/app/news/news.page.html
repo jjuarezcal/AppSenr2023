@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Noticias</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <!--<ion-list-header>Noticias</ion-list-header>
+        <ion-item *ngFor="let news of _ns.informacion" [href]="'/newsdetail/' + news.id" detail="true">-->
+        <ion-item *ngFor="let news of _ns.informacion" (click)="enviarDetalles(news)">
+            <ion-avatar slot="start">
+                <img [src]="news.url_image">
+            </ion-avatar>
+            <ion-label>
+                <h2>{{news.title}}</h2>
+                <p>{{news.description}}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer class="white">
+    <ion-toolbar>
+        <img [src]="_is.sponsor" class="logoFooter" />
+    </ion-toolbar>
+</ion-footer>

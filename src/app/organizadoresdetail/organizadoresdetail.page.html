@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            {{ todo?.name }}
+        </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="noPadding">
+
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button color="tertiary" (click)="share(todo?.name, todo?.description)">
+            <ion-icon name="share"></ion-icon>
+        </ion-fab-button>
+
+    </ion-fab>
+    <div class="contieneTitulos">
+        <h2>{{ todo?.name }}</h2>
+        <p [innerHTML]="todo?.description"></p>
+    </div>
+    <ion-card>
+
+        <ion-card-content class="cartaNews">
+            <p [innerHTML]="todo?.body_html"></p>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-content>
+    <ion-card *ngFor="let item of notas" (click)="editarNota(item.contenido, item.key)">
+        <ion-card-content>
+            <div class="ribbon ribbon-top-right"><span>Guardada</span></div>
+            <div class="topClip">
+                <ion-icon ios="ios-attach" md="md-attach"></ion-icon>
+            </div>
+            <ion-label>
+                <div class="avatar-circle">
+                    <span class="initials">{{avatar(item.key)}}</span>
+                </div>
+                <h2>{{item.key}}</h2>
+                <p>{{item.contenido}}</p>
+            </ion-label>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

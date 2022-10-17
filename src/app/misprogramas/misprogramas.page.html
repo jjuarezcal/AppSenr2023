@@ -1,0 +1,20 @@
+<ion-content>
+    <ion-card *ngFor="let item of programas" (click)="verPrograma(item.contenido, item.key)">
+        <ion-card-content>
+            <div class="ribbon ribbon-top-right"><span>Guardada</span></div>
+            <ion-label>
+                <div class="avatar-circle">
+                    <span class="initials">{{avatar(item.contenido.title)}}</span>
+                </div>
+                <h2>{{item.contenido.title}}</h2>
+                <p>{{item.contenido.description}}</p>
+                <ion-badge color="tertiary" slot="end" class="badge" *ngFor="let speakers of _ss.rooms">
+                    <span *ngIf="item.contenido.room_id == speakers.id">
+                                 {{speakers.name}}</span>
+                </ion-badge>
+                <!-- <ion-badge color="tertiary" slot="end" class="badge">{{item.contenido.room.name}}</ion-badge>-->
+            </ion-label>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

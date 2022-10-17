@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Comunicaciones Posters
+        </ion-title>
+
+
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+    <div>
+
+        <div>
+
+            <ion-segment [(ngModel)]="dias">
+                <ion-segment-button *ngFor="let poster of _ps.postercategories" [value]="poster.name">
+                    {{poster.name}}
+                </ion-segment-button>
+            </ion-segment>
+
+            <div [ngSwitch]="dias" *ngFor="let poster of _ps.postercategories">
+                <ion-list *ngSwitchCase="poster.name" ngSelected="poster.name == poster.name">
+                    <!-- <ion-item detail="true" *ngFor="let posters of poster.posters" [href]="'/postersdetalles/' + posters.id">-->
+                    <ion-item detail="true" *ngFor="let posters of poster.posters" (click)="detalles(posters.id)">
+                        <ion-label>
+                            <div class="avatar-circle">
+                                <span class="initials">{{avatar(posters.title)}}</span>
+                            </div>
+                            <h2 class="top">{{posters.title}}</h2>
+
+                        </ion-label>
+                    </ion-item>
+
+                </ion-list>
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-button (click)="volver()">
+                <ion-icon slot="icon-only" name="md-arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>
+            {{ todo?.title }}
+        </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="noPadding">
+
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button color="tertiary" (click)="share(todo?.title, todo?.description, todo?.url_image, todo?.url_news)">
+            <ion-icon name="share"></ion-icon>
+        </ion-fab-button>
+
+    </ion-fab>
+    <div class="perfil">
+        <img [src]="todo?.url_image" />
+    </div>
+
+
+    <ion-card>
+
+        <ion-item>
+            <ion-icon name="calendar" slot="start"></ion-icon>
+            <ion-datetime display-format="DD/MM/YYYY" value="{{ todo?.date }}"></ion-datetime>
+        </ion-item>
+
+        <ion-card-content class="cartaNews">
+            <h2>{{ todo?.title }}</h2>
+            <p>{{ todo?.description }}</p>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Salas
+        </ion-title>
+
+
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list-header *ngFor="let programa of _rs.programas" class="contenidoSelector">
+        <ion-select (ionChange)="_rs.changeCategory($event)" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Seleccionar categoría" class="selectorCategorias" cancelText="Cancelar">
+            <ion-select-option *ngFor="let categoria of _rs.categorias" value="{{categoria.id}}" (ionSelect)="_rs.selectCategory(categoria.id)">{{categoria.name}}</ion-select-option>
+        </ion-select>
+
+    </ion-list-header>
+
+    <div *ngFor="let categoria of _rs.categorias" class="{{categoria.id}}">
+        <!--aquí vamos a filtar la categoría por su id para poder mostrar según selección-->
+        <div *ngIf="categoria.id == _rs.id">
+            <div>
+
+                <ion-segment [(ngModel)]="dias">
+                    <ion-segment-button *ngFor="let days of categoria.days" [value]="days.name">
+                        {{days.name}}
+                    </ion-segment-button>
+                </ion-segment>
+
+                <div [ngSwitch]="dias" *ngFor="let days of categoria.days">
+                    <ion-list *ngSwitchCase="days.name" ngSelected="days.name == days.name">
+                        <!--<ion-item detail="true" *ngFor="let events of days.events" [href]="'/catdetalles/' + events.id">-->
+                        <div *ngFor="let events of days.events">
+                            <ion-item detail="true" *ngIf="events.room_id == _rs.roomName" (click)="detalles(events)">
+
+                                <ion-label>
+                                    <div class="contenidoHoras">
+                                        <div class="franga">
+
+                                            <span>{{events.state}}</span>
+                                        </div>
+                                        <div class="horas">{{events.hour_ini}} - {{events.hour_end}}</div>
+                                    </div>
+                                    <h2>{{events.title}}</h2>
+                                    <p>{{events.description}}</p>
+
+                                    <ion-badge color="tertiary" slot="end" class="badge" *ngFor="let item of _ss.rooms">
+                                        <span *ngIf="events.room_id == item.id">
+                                        {{item.name}}</span>
+
+                                    </ion-badge>
+
+                                </ion-label>
+
+                            </ion-item>
+                        </div>
+
+                    </ion-list>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</ion-content>

@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>events</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>Eventos</ion-list-header>
+        <ion-item *ngFor="let events of _es.events">
+            <ion-label>
+                <div class="contenidoHoras">
+                    <div class="franga">
+                        <span *ngIf="events.hour_ini < '12:00'">Mañana</span>
+                        <span *ngIf="events.hour_ini == '12:00'">Mañana</span>
+                        <span *ngIf="events.hour_ini > '12:00'">Tarde</span>
+                    </div>
+                    <div class="horas">{{events.hour_ini}} - {{events.hour_end}}</div>
+                </div>
+                <h2>{{events.title}}</h2>
+                <p>{{events.description}}</p>
+                <ion-badge color="danger" slot="end" class="badge">{{events.room.name}}</ion-badge>
+
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

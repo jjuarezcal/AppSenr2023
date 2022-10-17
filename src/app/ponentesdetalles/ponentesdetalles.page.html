@@ -1,0 +1,100 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+
+            <!--  <ion-nav-pop></ion-nav-pop>-->
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            Ponentes
+        </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngFor="let ponente of ponentes">
+
+        <div *ngFor="let item of guardadaponentes">
+            <div class="ribbon ribbon-top-right" *ngIf="item.key == 'ponente-'+ponente.contenido.id"><span>Guardada</span></div>
+        </div>
+
+        <div *ngFor="let item of guardadanotas">
+            <div class="topClip" *ngIf="item.key == ponente.contenido.name + ' '+ponente.contenido.surname">
+                <ion-icon ios="ios-attach" md="md-attach"></ion-icon>
+            </div>
+        </div>
+
+        <div class="perfil">
+            <img [src]="ponente.contenido.url_photo" class="avatar-ponente" />
+            <h2>{{ ponente.contenido.name }} {{ ponente.contenido.surname }}</h2>
+            <p>{{ ponente.contenido.organization}}</p>
+            <p>{{ponente.contenido.city}}</p>
+        </div>
+        <ion-fab vertical="top" horizontal="end" slot="fixed" class="fab-padding">
+            <ion-fab-button color="tertiary">
+                <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+
+            <ion-fab-list>
+                <ion-fab-button (click)="openAlertNewTask(ponente.contenido)">
+                    <ion-icon ios="ios-create" md="md-create"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-button (click)="guardarPonente(ponente.contenido)">
+                    <ion-icon ios="ios-heart" md="md-heart"></ion-icon>
+                </ion-fab-button>
+            </ion-fab-list>
+
+        </ion-fab>
+
+        <ion-card *ngIf="ponente.contenido.phone || ponente.contenido.email || ponente.contenido.twitter || ponente.contenido.facebook || ponente.contenido.linkedin">
+
+
+            <ion-card-header>
+
+                <ion-card-title>Redes sociales</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="redesSociales">
+                <ion-icon name="call" *ngIf="ponente.contenido.phone" class="leftMargin rightMargin" (click)="llamarMovil(ponente.contenido.phone)"></ion-icon>
+                <ion-icon name="mail-unread" *ngIf="ponente.contenido.email" class="rightMargin" (click)="envio(ponente.contenido.email)"></ion-icon>
+                <ion-icon name="logo-twitter" *ngIf="ponente.contenido.twitter" class="rightMargin" (click)="abrirRedSocial(ponente.contenido.twitter)"></ion-icon>
+                <ion-icon name="logo-facebook" *ngIf="ponente.contenido.facebook" class="rightMargin" (click)="abrirRedSocial(ponente.contenido.facebook)"></ion-icon>
+                <ion-icon name="logo-linkedin" *ngIf="ponente.contenido.linkedin" class="rightMargin" (click)="abrirRedSocial(ponente.contenido.linkedin)"></ion-icon>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf="ponente.contenido.biography">
+            <ion-card-header>
+                <ion-card-title>Bibliografía</ion-card-title>
+            </ion-card-header>
+            <ion-card-content [innerHTML]="ponente.contenido.biography">
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf="ponente.contenido.events">
+            <ion-card-header>
+                <ion-card-title>Ponencias</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="noPadding">
+                <ion-item detail="true" *ngFor="let events of ponente.contenido.events" (click)="detalles(events)">
+                    <ion-label>
+                        <div class="contenidoHoras">
+                            <div class="franga">
+
+                                <span>{{events.state}}</span>
+                            </div>
+                            <div class="horas">{{events.hour_ini}} - {{events.hour_end}}</div>
+                        </div>
+                        <h2>{{events.title}}</h2>
+                        <p>{{events.description}}</p>
+                        <ion-badge color="tertiary" slot="end" class="badge" *ngFor="let item of _ss.rooms">
+                            <span *ngIf="events.room_id == item.id"> {{item.name}}</span>
+                        </ion-badge>
+
+                    </ion-label>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+</ion-content>

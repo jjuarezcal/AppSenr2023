@@ -1,0 +1,16 @@
+export { CategoriesService } from './categories.service';
+export { SpeakersService } from './speakers.service';
+export { InformacionService } from './informacion.service';
+export { NewsService } from './news.service';
+export { UbicacionService } from './ubicacion.service';
+export { ProgramaService } from './programa.service';
+export { TasksServiceService } from './tasks-service.service';
+export { PushnotificationService } from './pushnotification.service';
+export { MicongresoService } from './micongreso.service';
+export { RoomsService } from './rooms.service';
+export { PostersService } from './posters.service';
+export { OralesService } from './orales.service';
+export { SponsorsService } from './sponsors.service';
+export { OrganizadoresService } from './organizadores.service';
+export { AuthService } from './auth.service';
+export { PreguntasService } from './preguntas.service';

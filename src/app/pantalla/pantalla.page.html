@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="dismiss()">
+                <ion-icon slot="icon-only" name="md-arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Pregunta</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div class="preguntas">
+        <!--aqui metemos los chips de los usuarios-->
+        <div class="chip" [style.background-color]="usuario.color">
+            <ion-avatar class="Avatar">
+                <img class="imagenAvatar" [src]="usuario.image">
+            </ion-avatar>
+            <ion-label class="labelAvatar">{{usuario.nombre}}</ion-label>
+        </div>
+
+        <!--aquí metemos las preguntas-->
+        <ng-container class="pregunta">
+            <p>{{preguntasServices.pantalla.titulo}}</p>
+
+            <div class="paraPonente">Pregunta para: {{preguntasServices.pantalla.ponente}}</div>
+
+        </ng-container>
+    </div>
+</ion-content>

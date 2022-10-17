@@ -1,0 +1,16 @@
+ion-badge {
+    font-size: 9px;
+    font-weight: 400;
+    position: absolute;
+    top: 30px;
+    height: 18px;
+    width: 18px;
+    border-radius: 9px;
+    padding-top: 4px;
+}
+
+.sc-ion-segment-md-s>.segment-button-checked {
+    background: #4490c9;
+    --btn-border-color: #4490c9;
+    color: #ffffff;
+}

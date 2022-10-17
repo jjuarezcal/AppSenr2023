@@ -1,0 +1,48 @@
+<ion-app>
+    <ion-split-pane>
+        <ion-menu>
+            <ion-header class="home">
+                <ion-toolbar [ngStyle]="_is.estilo">
+                    <div *ngFor="let info of _is.informacion" class="informacion">
+                        <img [src]="info.url_photo_menu" />
+
+                        <ion-title class="tituloMenu">
+                            {{info.title}} <br> <span [innerHTML]="info.description"></span>
+                        </ion-title>
+                    </div>
+                    <ion-buttons slot="end" *ngIf="UID">
+                        <ion-button (click)="logout()">
+                            <ion-icon slot="icon-only" name="power"></ion-icon>
+                        </ion-button>
+                    </ion-buttons>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content>
+                <ion-list>
+                    <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+                        <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+                            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                            <ion-label>
+                                {{p.title}}
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+                <div class="menuUsuario" [ngStyle]="_is.estiloSecundario" (click)="viewDetails(UID)" *ngIf="UID">
+                    <div class="avatarMenu">
+                        <img [src]="imagen">
+                    </div>
+                    <div class="nombre">{{nombre}} {{apellidos}}</div>
+                    <div class="editarPerfil">
+                        <div class="iconColor">
+                            <ion-icon name="contact"></ion-icon>
+                        </div>
+                        <small>Editar perfil</small>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-menu>
+
+        <ion-router-outlet main></ion-router-outlet>
+    </ion-split-pane>
+</ion-app>

@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-button (click)="dismiss()">
+                <ion-icon slot="icon-only" name="md-arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Nueva pregunta</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="form-content">
+    <form class="form" [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value, contador); formSubmit = !formSubmit">
+        <ion-item>
+            <ion-label position="floating" [ngStyle]="_is.textos">Seleccionar ponente</ion-label>
+            <ion-select okText="Seleccionar" cancelText="Cancelar" placeholder="Seleccionar ponente" formControlName="ponente" class="form-control">
+                <ng-container *ngFor="let item of items; let i = index; last as isLast;">
+                    <ion-select-option *ngIf="item.payload.doc.data().ponente == true" value="{{item.payload.doc.data().nombre}} {{item.payload.doc.data().apellidos}}">
+                        {{item.payload.doc.data().nombre}} {{item.payload.doc.data().apellidos}}
+                    </ion-select-option>
+                </ng-container>
+            </ion-select>
+        </ion-item>
+
+
+        <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.ponente">
+                <div class="error-message" *ngIf="validations_form.get('ponente').hasError(validation.type) && (validations_form.get('ponente').dirty || validations_form.get('ponente').touched)">
+                    {{ validation.message }}
+                </div>
+            </ng-container>
+        </div>
+
+        <ion-item>
+            <ion-label position="floating" [ngStyle]="_is.textos">Escribir la pregunta</ion-label>
+            <ion-input type="textarea" placeholder="Escribir la pregunta" rows="10" cols="20" formControlName="titulo" class="form-control areas" required></ion-input>
+        </ion-item>
+
+        <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.titulo">
+                <div class="error-message" *ngIf="validations_form.get('titulo').hasError(validation.type) && (validations_form.get('titulo').dirty || validations_form.get('titulo').touched)">
+                    {{ validation.message }}
+                </div>
+            </ng-container>
+        </div>
+
+        <ion-button class="form-action-button" expand="block" type="submit" [disabled]="!validations_form.valid" *ngIf="!formSubmit">Hacer pregunta</ion-button>
+    </form>
+
+
+</ion-content>

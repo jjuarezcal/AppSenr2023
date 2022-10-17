@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            {{ todo?.title }}
+        </ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="noPadding">
+
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button color="tertiary" (click)="share(todo?.title, todo?.description)">
+            <ion-icon name="share"></ion-icon>
+        </ion-fab-button>
+
+    </ion-fab>
+
+    <ion-card *ngIf="todo?.title">
+        <ion-card-content class="cartaNews">
+            <h2>Información</h2>
+            <h3>{{ todo?.title }}</h3>
+            <button ion-button small (click)="irUrl(todo?.url)" class="botonUrl" *ngIf="todo?.url">Ver Abstract</button>
+            <button ion-button small (click)="irUrl(todo?.url_pdf)" class="botonUrl marginLeft" *ngIf="todo?.url_pdf">Ver Pdf</button>
+
+            <button ion-button small class="botonUrlNo" *ngIf="!todo?.url">Ver Abstract</button>
+            <button ion-button small class="botonUrlNo marginLeft" *ngIf="!todo?.url_pdf">Ver Pdf</button>
+
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="todo?.authors">
+        <ion-card-content class="cartaNews">
+            <h2>Autores / Colaboradores</h2>
+            <p>{{ todo?.authors }}</p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="todo?.description">
+        <ion-card-content class="cartaNews">
+            <h2>Descripción</h2>
+            <div class="containerHt" [ngClass]="{ht: ht}">
+                {{todo?.description}}
+            </div>
+
+            <div class="arrow">
+                <ion-icon ios="ios-arrow-dropdown-circle" md="md-arrow-dropdown-circle" (click)="ht = true" *ngIf="ht != true"></ion-icon>
+            </div>
+            <div class="arrow">
+                <ion-icon ios="ios-arrow-dropup-circle" md="md-arrow-dropup-circle" (click)="ht = false" *ngIf="ht == true"></ion-icon>
+            </div>
+
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="todo?.body_html">
+        <ion-card-content class="cartaNews">
+            <h2>Abstract</h2>
+            <div class="containerHtml" [ngClass]="{show: show}">
+                <div [innerHTML]="todo?.body_html"></div>
+            </div>
+            <div class="arrow">
+                <ion-icon ios="ios-arrow-dropdown-circle" md="md-arrow-dropdown-circle" (click)="show = true" *ngIf="show != true"></ion-icon>
+            </div>
+            <div class="arrow">
+                <ion-icon ios="ios-arrow-dropup-circle" md="md-arrow-dropup-circle" (click)="show = false" *ngIf="show == true"></ion-icon>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

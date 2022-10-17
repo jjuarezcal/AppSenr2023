@@ -1,0 +1,49 @@
+.twoheader {
+    background-color: #377e7a;
+}
+
+.contenidoHoras {
+    border: 1px solid #e8e7e7;
+    font-size: 10px;
+    float: left;
+    margin-right: 10px;
+}
+
+.franga {
+    background-color: #4490c9;
+    color: #FFFFFF;
+    padding: 5px;
+    text-align: center;
+}
+
+.horas {
+    padding: 5px;
+    color: #6f6f6f;
+    text-align: center;
+}
+
+.badge {
+    float: right;
+}
+
+ion-select {
+    width: 92%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #FFFFFF;
+    color: #4490c9;
+    --icon-color: #4490c9;
+    --padding-bottom: 5px;
+    --padding-top: 5px;
+}
+
+ion-segment-button {
+    float: left;
+    width: 50%;
+}
+
+.sc-ion-segment-md-s>.segment-button-checked {
+    background: #4490c9;
+    border-color: #4490c9;
+    color: #ffffff;
+}

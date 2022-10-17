@@ -1,0 +1,56 @@
+.form-content .items {
+    border: none !important;
+    --border-width: 0px;
+}
+
+.imputsForm.native-input {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+
+ion-item.sc-ion-input-md-h:not(.item-label),
+ion-item:not(.item-label) .sc-ion-input-md-h {
+    --padding-start: 20px !important;
+}
+
+.sc-ion-input-md-h {
+    --padding-top: 12px;
+    --padding-end: 20px;
+    --padding-bottom: 12px;
+    font-size: inherit;
+    margin-bottom: 20px;
+}
+
+.native-input.sc-ion-input-md:invalid {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 10px;
+}
+
+.nuevoregistro {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.recordar {
+    border-bottom: 1px solid #CCCCCC;
+    padding-bottom: 20px;
+}
+
+
+/* For general iPad layouts */
+
+@media only screen and (device-width: 768px) {
+    .items {
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .validation-errors {
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}

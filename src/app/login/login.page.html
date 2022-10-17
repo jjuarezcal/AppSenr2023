@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-title>Acceso usuarios</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="form-content">
+
+    <!-- 
+     <div class="avatarLogin">
+      <div>
+          <img [src]="profilePicture">
+      </div>
+  </div>
+ -->
+    <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
+
+        <ion-item class="items">
+            <ion-input type="text" formControlName="email" class="imputsForm" required placeholder="Email"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.email">
+                <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                    {{ validation.message }}
+                </div>
+            </ng-container>
+        </div>
+
+        <ion-item class="items">
+            <ion-input type="password" formControlName="password" class="form-controll" required class="imputsForm" placeholder="Contraseña"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+            <ng-container *ngFor="let validation of validation_messages.password">
+                <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+                    {{ validation.message }}
+                </div>
+            </ng-container>
+        </div>
+
+        <ion-button class="nuevoregistro" expand="block" type="submit" [disabled]="!validations_form.valid">Acceso usuarios</ion-button>
+
+        <label class="error-message">{{errorMessage}}</label>
+    </form>
+
+    <p class="recordar center">
+        <a [routerLink]="['/recordar']">
+          ¿Olvidaste tu contraseña?
+      </a>
+    </p>
+    <hr>
+    <ion-button class="nuevoregistro" icon-left color="light" expand="block" (click)="loginWithGoogle()">
+        <ion-img src="assets/images/iconGoogle.png"></ion-img> LOG IN CON GOOGLE
+    </ion-button>
+    <hr>
+    <ion-button class="nuevoregistro" icon-left color="primary" expand="block" (click)="loginWithFacebook()">
+        <ion-icon name="logo-facebook"></ion-icon> LOG IN CON FACEBOOK
+    </ion-button>
+    <hr>
+    <p class="nuevoregistro center">
+        ¿No tienes cuenta de usuario?
+    </p>
+    <ion-button class="nuevoregistro" icon-left expand="block" (click)="goRegisterPage()" color="danger">
+        <ion-icon name="person-add"></ion-icon> Crear nuevo usuario
+    </ion-button>
+
+</ion-content>

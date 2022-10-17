@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Ubicación</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngFor="let maps of _us.maps">
+        <div class="direccion">
+            <div class="espacio top" *ngIf="maps.space">
+                <strong>Espacio:</strong><br>{{maps.space}}
+            </div>
+            <div class="espacio" *ngIf="maps.address">
+                <strong>Dirección:</strong><br>{{maps.address}}
+            </div>
+        </div>
+
+        <iframe class="newsframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" [src]="sanitizer.bypassSecurityTrustResourceUrl('https://maps.google.com/maps?q='+maps.lat+','+maps.lon+'&hl=es;z=5&output=embed')">
+       </iframe>
+    </div>
+
+</ion-content>

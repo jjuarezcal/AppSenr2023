@@ -1,0 +1,69 @@
+.botonUrl {
+    padding: 3px 10px 3px 10px;
+    background-color: #ff4081;
+    color: #FFFFFF;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.botonUrlNo {
+    padding: 3px 10px 3px 10px;
+    background-color: #cccccc;
+    color: #FFFFFF;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.marginLeft {
+    margin-left: 5px;
+}
+
+.cartaNews h2 {
+    border-bottom: 1px solid #CCCCCC;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.cartaNews h3 {
+    margin-bottom: 10px;
+}
+
+.containerHtml {
+    height: 40px;
+    overflow: hidden;
+}
+
+.containerHt {
+    height: 40px;
+    overflow: hidden;
+}
+
+.show {
+    overflow: visible;
+    height: auto;
+}
+
+.ht {
+    overflow: visible;
+    height: auto;
+}
+
+.arrow {
+    text-align: center;
+    color: #4490c9;
+    font-size: 30px;
+    background-image: url('assets/images/linea.png');
+    background-position: center left;
+    background-repeat: repeat-x;
+    max-height: 35px;
+    z-index: 100;
+}
+
+.arrow ion-icon {
+    z-index: 1000;
+    background-color: #FFFFFF;
+}
+
+.sc-ion-card-md-h {
+    --color: #000000;
+}

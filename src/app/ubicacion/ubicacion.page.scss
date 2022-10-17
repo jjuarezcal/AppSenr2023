@@ -1,0 +1,31 @@
+.direccion {
+    background-color: #FFFFFF;
+    padding: 10px;
+    border: 1px solid #e2e2e2;
+    z-index: 100;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.espacio {
+    font-size: 13px;
+}
+
+.top {
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.newsframe {
+    //set the height to 100% of the viewport less the height of the header
+    height: calc(100vh - 60px);
+    //set the width to 100% of the viewport width
+    width: 100vw;
+    //remove border, padding, margin
+    border: none;
+    padding: 0;
+    margin: 0;
+}

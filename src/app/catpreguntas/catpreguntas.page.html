@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Categorías preguntas
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <div class="accesoRapido">
+        <h3>Acceso rápido</h3>
+        <ion-row>
+            <ion-col class="col">
+                <div class="preguntasCol redondo" [routerDirection]="'root'" [routerLink]="['/preguntas']">
+                    <ion-icon name="help"></ion-icon>
+                </div>
+                <small>Preguntas</small>
+            </ion-col>
+            <ion-col class="col">
+                <div class="ponentes redondo" [routerDirection]="'root'" [routerLink]="['/speakers']">
+                    <ion-icon name="contact"></ion-icon>
+                </div>
+                <small>Ponentes</small>
+            </ion-col>
+            <ion-col class="col">
+                <div class="usuarios redondo">
+                    <ion-icon name="contacts" [routerDirection]="'root'" [routerLink]="['/usuarios']"></ion-icon>
+                </div>
+                <small>Usuarios</small>
+            </ion-col>
+            <ion-col class="col">
+                <div class="mas redondo">
+                    <ion-icon name="list-box" [routerDirection]="'root'" [routerLink]="['/programa']"></ion-icon>
+                </div>
+                <small>Programa</small>
+            </ion-col>
+        </ion-row>
+    </div>
+    <!-- <div *ngFor="let item of categorias" class="contienePreguntas" (click)="goToPreguntas(item.payload.doc.data().idPonencias)">
+        {{item.payload.doc.data().title}}
+        <br> {{item.payload.doc.data().preguntas}}
+    </div>
+-->
+    <ion-card *ngFor="let item of categorias" (click)="goToPreguntas(item.payload.doc.data())">
+        <ion-card-content>
+            <ion-label>
+                <div class="avatar-circle">
+                    <span class="initials">{{avatar(item.payload.doc.data().title)}}</span>
+                </div>
+                <h2>{{item.payload.doc.data().title}}</h2>
+            </ion-label>
+        </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

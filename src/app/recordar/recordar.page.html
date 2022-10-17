@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-toolbar [ngStyle]="_is.estilo">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Recordar contraseña</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form class="form" [formGroup]="validations_form" (ngSubmit)="cambiarPassword(validations_form.value)">
+        <ion-item class="items">
+            <ion-input type="email" formControlName="email" class="imputsForm" required placeholder="Email"></ion-input>
+        </ion-item>
+        <ion-button class="nuevoregistro" expand="block" type="submit" [disabled]="!validations_form.valid">Recordar contraseña</ion-button>
+    </form>
+</ion-content>

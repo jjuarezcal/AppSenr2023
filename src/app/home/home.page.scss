@@ -1,0 +1,63 @@
+.col-4 ion-icon {
+    font-size: 20px;
+}
+
+.col-4 {
+    padding: 0px;
+}
+
+.colHome {
+    text-align: center;
+    background-color: #4490c9;
+    color: #FFFFFF;
+    padding: 20px 5px 20px 5px;
+    margin: 5px;
+    font-size: 12px;
+}
+
+.fondo {
+    text-align: center;
+    background-color: #4490c9;
+    color: #FFFFFF;
+    padding: 20px 5px 20px 5px;
+    margin: 5px;
+    font-size: 12px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.noticias span a {
+    color: #63dfd8;
+    text-align: right;
+    margin-right: 20px;
+}
+
+.animation1 {
+    -webkit-animation: fadeInLeft 1s;
+    animation: fadeInLeft 1s;
+}
+
+.animation2 {
+    -webkit-animation: fadeInLeft 2s;
+    animation: fadeInLeft 2s;
+}
+
+.noticias a {
+    color: #FFFFFF !important;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.col-4 {
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    cursor: pointer;
+}
